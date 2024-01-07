@@ -1,18 +1,21 @@
 ---
-description: How to quickly run a demo with Datafast Runtime
+description: Quickly run a demo with Datafast Runtime
 ---
 
 # 🚀 Quickstart
 
 ## Prerequisites
 
-Before running Datafast-Runtime, you have to prepare…
+Before running Datafast-Runtime using this Quickstart''s tutorial, you have to prepare yourself…
 
-* a S3-Compatible object storage (used as data-warehouse) which contains blockchain data, using [Delta Ingestor.](https://www.notion.so/Delta-Ingestor-246d8ff3c77f4e0997a4ad5f81ecc9ab?pvs=21) The number of blocks should be enough to index your subgraph
-* A subgraph with at least **version ≥ 0.0.5** correctly codegen-ed & built. Refer to [https://thegraph.com/docs/en/developing/creating-a-subgraph/](https://thegraph.com/docs/en/developing/creating-a-subgraph/)
-* A working Ethereum JSON-RPC, you can use a premium node or public node in [https://chainlist.org/chain/1](https://chainlist.org/chain/1)
-* A database that Datafast-Runtime can use to store output data (currently only MongoDB supported)
-* Rust toolchain (cargo, stuffs...)
+*   A subgraph with at least **version ≥ 0.0.5** correctly codegen-ed & built. Refer to [https://thegraph.com/docs/en/developing/creating-a-subgraph/](https://thegraph.com/docs/en/developing/creating-a-subgraph/).&#x20;
+
+    _If you don't have a subgraph already, you can use our example Uniswap-V3 subgraph at_ [_https://github.com/datafast-network/subgraph-testing/tree/main/packages/uniswap-v3_](https://github.com/datafast-network/subgraph-testing/tree/main/packages/uniswap-v3)
+
+    _To use the example Uniswap-V3 subgraph, you need either npm, yarn or pnpm._
+
+    _Clone the repo and build the code with `npm run build` or `yarn build` or `pnpm build`_
+* Rust toolchain (cargo, stuffs...) to compile the code to the binary, executable file.
 
 ## Running
 
@@ -22,45 +25,24 @@ Clone the repository
 $ git clone git@github.com:datafast-network/datafast-runtime.git
 ```
 
-Export required environment variables, including Object Storage host & credential, location of data store etc
+Enable the quickstart script
 
-```bash
-export AWS_ENDPOINT=your-s3-endpoint
-export AWS_REGION=your-region
-export AWS_S3_ALLOW_UNSAFE_RENAME=true
-export AWS_SECRET_ACCESS_KEY=your-s3-secret-key
-export AWS_ACCESS_KEY_ID=your-s3-access-key
-export AWS_ALLOW_HTTP=true
-export AWS_FORCE_PATH_STYLE=true
-export TABLE_PATH=your-path-to-bucket-or-director-that-contain-block-data
-export RUST_LOG=info,deltalake=off
+```
+$ chmod +x quickstart.sh
 ```
 
-Create config file in the repository folder with name as `config.toml`
+Run the script with env `DFR_SUBGRAPH_DIR` exported being the <mark style="color:orange;">**absolute path to your subgraph's build-dir**</mark> _(when using the example subgraph, path should be something like `some-path/uniswap-v3/build`)_
 
-```toml
-chain = "ethereum"
-subgraph_name = "my-subgraph"
-subgraph_id = "1234"
-subgraph_dir = "/local-path-to-your-subgraph-dir/build"
-reorg_threshold = 500
-rpc_endpoint = "wss://ethereum-json-rpc-endpoint"
-
-[source.delta]
-table_path = "s3://ethereum/blocks-data/"
-query_step = 20000
-
-[database.mongo]
-uri = "mongodb://root:example@localhost:27017"
-database = "db0"
-
-[valve]
-allowed_lag = 10
-wait_time = 10
+```
+$ DFR_SUBGRAPH_DIR=/path/to/your/subgraph/build/dir ./quickstart.sh
 ```
 
-Run the runtime with...
+When running, the script will do the following:
 
-```bash
-$ cargo run --release
-```
+* export required environment variables, including...
+  * &#x20;credentials to access the demo blockchain data store we prepared
+  * `CONFIG` env to the `quickstart_config.toml`
+* docker compose up the demo database (MongoDB & MongoExpress)
+* run the runtime with `cargo run --release`
+
+<figure><img src=".gitbook/assets/Screenshot 2024-01-07 at 20.16.19.png" alt="" width="563"><figcaption></figcaption></figure>

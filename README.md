@@ -1,19 +1,19 @@
 ---
 description: >-
-  Datafast Runtime is a high-performance processing subgraph-runtime which is
+  Datafast Runtime is a high-performance subgraph processing runtime which is
   written from scratch and designed to handle subgraphs with unparalleled speed
   & storage-efficiency
 ---
 
 # 😁 Introduction
 
-{% embed url="https://github.com/datafast-network/datafast-runtime" %}
+**Code repository at** [**https://github.com/datafast-network/datafast-runtime**](https://github.com/datafast-network/datafast-runtime)
 
-> **Datafast Runtime is a high-performance processing subgraph-runtime which is written from scratch and designed to handle subgraphs with unparalleled speed & NoSQL storage. With this runtime, your data processing tasks will be faster and more storage-cost efficient than the traditional GraphNode from TheGraph**
+**Document repository at** [**https://github.com/datafast-network/runtime-document**](https://github.com/datafast-network/runtime-document)
 
 <figure><img src=".gitbook/assets/hardbed-logo.png" alt="" width="563"><figcaption></figcaption></figure>
 
-## What Datafast Runtime can do better than GraphNode/TheGraph?
+## What does Datafast Runtime do?
 
 ❤️  Performance-focus - it is built to prioritize indexing speed
 
@@ -21,7 +21,7 @@ description: >-
 
 ❤️  Blockchain data is smartly organized & compressed using Databricks' DeltaLake technology plus Protobuf on top for storage-efficiency, very fast serialization, very fast to ingest and unlimited scalability
 
-❤️  Output, indexed data is stored in NoSQL database to reduce database cost yet still fast in retrieval
+❤️  Indexed data is stored in NoSQL database to reduce database cost yet still fast in retrieval
 
 ❤️  Allowing user to specify a limit time to keep output data in store, like last 6 months or last year - help reduce data storage cost by remove outdated data
 
@@ -29,9 +29,29 @@ description: >-
 
 ❤️  Extensible - as Datafast code base is way simpler and extensible than graph-node, allowing user to freely implement more features without crying for help
 
+❤️  No need IPFS!
+
+❤️  No GAS required for indexing!
 
 
-## What Datafast Runtime cannot do compared to GraphNode / TheGraph
 
-❌  Datafast Runtime is built to focus on the indexing-job. It does not and is not going to ever come with a GraphQL query layer.
+## What Datafast Runtime cannot do...
 
+❌  Datafast Runtime is built to focus on the indexing-job. It does not come with a GraphQL query layer.
+
+
+
+## 🚧  Development Status
+
+Datafast is built for educational & sharing purpose & not ready for production - since there are plenty of features that needs implementing & issues need addressing.&#x20;
+
+Still, Datafast-Runtime can be used as a ground-work to build in-house blockchain indexing solution to replace GraphNode / TheGraph
+
+
+
+## 🔰  Who is this runtime for?
+
+* Companies who want to host their own subgraph data
+* Companies who want to host their own subgraph data with efficient storage cost, with their own solution
+* Developers who want to play around with their own version of Subgraph Indexing Engine
+* Developers who want to play around with WebAssembly technology and build crazier stuffs with it.
