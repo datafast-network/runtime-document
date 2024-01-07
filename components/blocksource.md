@@ -9,7 +9,7 @@ BlockSource polls the block-store for archived blockchain data & also new data.&
 
 There can be multiple variants of BlockSource. Currently the only variant implemented is DeltaLake which is the product of Delta-Ingestor
 
-## [DeltaLake block source by DeltaIngestor](https://github.com/datafast-network/datafast-runtime/blob/main/src/components/block\_source/delta/mod.rs)
+## [DeltaLake block source by DeltaIngestor](https://github.com/vutran1710/delta-ingestor)
 
 <figure><img src="../.gitbook/assets/68747470733a2f2f646f63732e64656c74612e696f2f6c61746573742f5f7374617469632f64656c74612d6c616b652d77686974652e706e67.png" alt="" width="163"><figcaption></figcaption></figure>
 
